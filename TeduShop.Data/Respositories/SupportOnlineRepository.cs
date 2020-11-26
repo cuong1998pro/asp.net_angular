@@ -4,11 +4,11 @@ using TeduShop.Models.Models;
 
 namespace TeduShop.Data.Respositories
 {
-    public interface ISupportOnlineRepository
+    public interface ISupportOnlineRepository : IRespository<SupportOnline>
     {
     }
 
-    public class SupportOnlineRepository : RepositoryBase<Product>, ISupportOnlineRepository
+    public class SupportOnlineRepository : RepositoryBase<SupportOnline>, ISupportOnlineRepository
     {
         public SupportOnlineRepository(IDbFactory dbFactory) : base(dbFactory)
         {

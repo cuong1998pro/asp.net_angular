@@ -4,11 +4,11 @@ using TeduShop.Models.Models;
 
 namespace TeduShop.Data.Respositories
 {
-    public interface IPostRepository
+    public interface IPostRepository : IRespository<Post>
     {
     }
 
-    public class PostRepository : RepositoryBase<Product>, IPostRepository
+    public class PostRepository : RepositoryBase<Post>, IPostRepository
     {
         public PostRepository(IDbFactory dbFactory) : base(dbFactory)
         {

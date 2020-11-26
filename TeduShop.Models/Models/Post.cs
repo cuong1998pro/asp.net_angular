@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TeduShop.Models.Models
@@ -33,7 +34,11 @@ namespace TeduShop.Models.Models
         public bool? HotFlag { get; set; }
         public int? ViewCount { get; set; }
 
+        public bool Status { get; set; }
+
         [ForeignKey("CategoryID")]
         public virtual PostCategory PostCategory { get; set; }
+
+        public virtual IEnumerable<PostTag> PostTags { get; set; }
     }
 }

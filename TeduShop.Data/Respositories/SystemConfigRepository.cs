@@ -4,11 +4,11 @@ using TeduShop.Models.Models;
 
 namespace TeduShop.Data.Respositories
 {
-    public interface ISystemConfigRepository
+    public interface ISystemConfigRepository : IRespository<SystemConflig>
     {
     }
 
-    public class SystemConfigRepository : RepositoryBase<Product>, ISystemConfigRepository
+    public class SystemConfigRepository : RepositoryBase<SystemConflig>, ISystemConfigRepository
     {
         public SystemConfigRepository(IDbFactory dbFactory) : base(dbFactory)
         {

@@ -4,11 +4,11 @@ using TeduShop.Models.Models;
 
 namespace TeduShop.Data.Respositories
 {
-    public interface IFooterRepository
+    public interface IFooterRepository : IRespository<Footer>
     {
     }
 
-    public class FooterRepository : RepositoryBase<Product>, IFooterRepository
+    public class FooterRepository : RepositoryBase<Footer>, IFooterRepository
     {
         public FooterRepository(IDbFactory dbFactory) : base(dbFactory)
         {
