@@ -6,11 +6,11 @@ namespace TeduShop.Models.Models
     [Table("ProductTags")]
     public class ProductTag
     {
-        [Key]
+        [Key, Column(Order = 0)]
         public int ProductID { get; set; }
 
         [Key]
-        [Column(TypeName = "varchar")]
+        [Column(TypeName = "varchar", Order = 1)]
         [MaxLength(50)]
         public string TagID { get; set; }
 
