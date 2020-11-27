@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using TeduShop.Models.Abstract;
 
 namespace TeduShop.Models.Models
 {
     [Table("Posts")]
-    public class Post
+    public class Post : Auditable
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -33,8 +34,6 @@ namespace TeduShop.Models.Models
         public bool? HomeFlag { get; set; }
         public bool? HotFlag { get; set; }
         public int? ViewCount { get; set; }
-
-        public bool Status { get; set; }
 
         [ForeignKey("CategoryID")]
         public virtual PostCategory PostCategory { get; set; }

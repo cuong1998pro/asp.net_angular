@@ -66,6 +66,14 @@
     <Compile Include="Migrations\202011261440089_AddStatus.designer.cs">
       <DependentUpon>202011261440089_AddStatus.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011270222072_fixpost.cs" />
+    <Compile Include="Migrations\202011270222072_fixpost.designer.cs">
+      <DependentUpon>202011270222072_fixpost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011270232574_fix-category.cs" />
+    <Compile Include="Migrations\202011270232574_fix-category.designer.cs">
+      <DependentUpon>202011270232574_fix-category.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Respositories\FooterRepository.cs" />
@@ -107,6 +115,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011261440089_AddStatus.resx">
       <DependentUpon>202011261440089_AddStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011270222072_fixpost.resx">
+      <DependentUpon>202011270222072_fixpost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011270232574_fix-category.resx">
+      <DependentUpon>202011270232574_fix-category.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
