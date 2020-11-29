@@ -8,7 +8,7 @@ namespace TeduShop.Data.Infrastructure
     {
         T Add(T entity);
 
-        void Update(T entity);
+        T Update(T entity);
 
         T Delete(T entity);
 

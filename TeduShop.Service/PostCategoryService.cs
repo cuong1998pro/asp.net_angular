@@ -9,7 +9,7 @@ namespace TeduShop.Service
     {
         PostCategory Add(PostCategory postCategory);
 
-        void Update(PostCategory postCategory);
+        PostCategory Update(PostCategory postCategory);
 
         PostCategory Delete(int id);
 
@@ -18,6 +18,8 @@ namespace TeduShop.Service
         IEnumerable<PostCategory> GetAllByParentId(int parentID);
 
         PostCategory GetByID(int id);
+
+        void Save();
     }
 
     public class PostCategoryService : IPostCategoryService
@@ -56,9 +58,14 @@ namespace TeduShop.Service
             return _postCategoryRepository.GetSingleById(id);
         }
 
-        public void Update(PostCategory postCategory)
+        public void Save()
         {
-            _postCategoryRepository.Update(postCategory);
+            _unitOfWork.Commit();
+        }
+
+        public PostCategory Update(PostCategory postCategory)
+        {
+            return _postCategoryRepository.Update(postCategory);
         }
     }
 }
