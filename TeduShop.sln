@@ -15,6 +15,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeduShop.Web", "TeduShop.We
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeduShop.Models", "TeduShop.Models\TeduShop.Models.csproj", "{C70ED5AD-AA98-4CA3-A8CD-2029DD3E5FA4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPIdentityExample", "ASPIdentityExample\ASPIdentityExample.csproj", "{26CB7C62-0882-4B63-95AA-6B820833BCF7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6990966C-B78E-44FD-96F8-5EA3F3F94EF9}"
+	ProjectSection(SolutionItems) = preProject
+		readme.md = readme.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +52,10 @@ Global
 		{C70ED5AD-AA98-4CA3-A8CD-2029DD3E5FA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C70ED5AD-AA98-4CA3-A8CD-2029DD3E5FA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C70ED5AD-AA98-4CA3-A8CD-2029DD3E5FA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26CB7C62-0882-4B63-95AA-6B820833BCF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26CB7C62-0882-4B63-95AA-6B820833BCF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26CB7C62-0882-4B63-95AA-6B820833BCF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26CB7C62-0882-4B63-95AA-6B820833BCF7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

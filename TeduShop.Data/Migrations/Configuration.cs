@@ -1,9 +1,11 @@
 ﻿namespace TeduShop.Data.Migrations
 {
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using TeduShop.Models.Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<TeduShop.Data.TeduShopDbContext>
     {
@@ -18,6 +20,30 @@
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
+            UserManager<ApplicationUser> manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new TeduShopDbContext()));
+
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new TeduShopDbContext()));
+
+            var user = new ApplicationUser()
+            {
+                UserName = "cuong1998pro",
+                Email = "cuong1998pro@gmail.com",
+                EmailConfirmed = true,
+                BirthDay = DateTime.Now,
+                FullName = "Phạm Quang Cường"
+            };
+
+            manager.Create(user, "123456");
+
+            if (!roleManager.Roles.Any())
+            {
+                roleManager.Create(new IdentityRole { Name = "Admin" });
+                roleManager.Create(new IdentityRole { Name = "User" });
+            }
+
+            var adminUser = manager.FindByEmail("cuong1998pro@gmail.com");
+
+            manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
         }
     }
 }
