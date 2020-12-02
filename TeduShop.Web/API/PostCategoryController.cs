@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using AutoMapper;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using TeduShop.Models.Models;
 using TeduShop.Service;
 using TeduShop.Web.Infrastructure.Core;
+using TeduShop.Web.Models;
+using TeduShop.Web.Infrastructure.Extensions;
 
 namespace TeduShop.Web.API
 {
@@ -18,7 +21,8 @@ namespace TeduShop.Web.API
             this._postCategoryService = postCategoryService;
         }
 
-        public HttpResponseMessage Post(HttpRequestMessage request, PostCategory postCategory)
+        [Route("add")]
+        public HttpResponseMessage Post(HttpRequestMessage request, PostCategoryViewModel postCategoryVM)
         {
             return CreateHttpResponse(request, () => {
                 HttpResponseMessage response = null;
@@ -28,7 +32,9 @@ namespace TeduShop.Web.API
                 }
                 else
                 {
-                    var category = _postCategoryService.Add(postCategory);
+                    PostCategory newPostCategory = new PostCategory();
+                    newPostCategory.UpdatePostCategory(postCategoryVM);
+                    var category = _postCategoryService.Add(newPostCategory);
                     _postCategoryService.Save();
 
                     response = request.CreateResponse(HttpStatusCode.Created, category);
@@ -37,7 +43,8 @@ namespace TeduShop.Web.API
             });
         }
 
-        public HttpResponseMessage Put(HttpRequestMessage request, PostCategory postCategory)
+        [Route("update")]
+        public HttpResponseMessage Put(HttpRequestMessage request, PostCategoryViewModel postCategoryVM)
         {
             return CreateHttpResponse(request, () => {
                 HttpResponseMessage response = null;
@@ -47,9 +54,10 @@ namespace TeduShop.Web.API
                 }
                 else
                 {
-                    var category = _postCategoryService.Update(postCategory);
+                    var postCategoryDb = _postCategoryService.GetByID(postCategoryVM.ID);
+                    postCategoryDb.UpdatePostCategory(postCategoryVM);
+                    var category = _postCategoryService.Update(postCategoryDb);
                     _postCategoryService.Save();
-
                     response = request.CreateResponse(HttpStatusCode.OK);
                 }
                 return response;
@@ -76,6 +84,7 @@ namespace TeduShop.Web.API
             });
         }
 
+        [Route("getall")]
         public HttpResponseMessage Get(HttpRequestMessage request)
         {
             return CreateHttpResponse(request, () => {
@@ -88,7 +97,9 @@ namespace TeduShop.Web.API
                 {
                     var list = _postCategoryService.GetAll();
 
-                    response = request.CreateResponse(HttpStatusCode.OK, list);
+                    var listPostCategoryVM = Mapper.Map<List<PostCategoryViewModel>>(list);
+
+                    response = request.CreateResponse(HttpStatusCode.OK, listPostCategoryVM);
                 }
                 return response;
             });
